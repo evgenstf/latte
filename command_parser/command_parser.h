@@ -10,7 +10,6 @@ using ParsedCommands = std::vector<std::pair<std::string, std::vector<std::strin
 
 class CommandParser {
 public:
-  CommandParser() = default;
   CommandParser(std::initializer_list<std::string> avaliable_commands):
     avaliable_commands_(avaliable_commands) {}
   CommandParser(std::unordered_set<std::string> avaliable_commands):
