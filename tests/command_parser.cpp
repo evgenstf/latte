@@ -35,10 +35,7 @@ size_t build_main_input_arguments(const std::string& command_line, char* argumen
       ++index;
     }
     if (!argument.empty()) {
-      std::clog << "argument: " << argument << std::endl;
-      std::clog << "first byte: " << arguments[arguments_count][0] << std::endl;
       strcpy(arguments[arguments_count++], argument.c_str());
-      std::clog << "argument: " << argument << std::endl;
     }
   }
   return arguments_count;
@@ -57,8 +54,65 @@ TEST(CommandParser, OneCommandOneParameter) {
   auto parsed_commands = parser.parse(arguments_count, arguments);
 
   ASSERT_EQ(parsed_commands.size(), 1);
-  auto expected_args = std::vector<std::string>({"argument1"});
   ASSERT_EQ(parsed_commands.front().first, "command1");
+  auto expected_args = std::vector<std::string>({"argument1"});
+  ASSERT_EQ(parsed_commands.front().second, expected_args);
+
+  free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
+}
+
+TEST(CommandParser, OneCommandThreeParameters) {
+  CommandParser parser{"command1"};
+
+  auto arguments = build_arguments_array(kMaxArgumentsCount, kMaxArgumentLength);
+  auto arguments_count =
+      build_main_input_arguments("program_name command1 argument1 argument2 argument3", arguments);
+  auto parsed_commands = parser.parse(arguments_count, arguments);
+
+  ASSERT_EQ(parsed_commands.size(), 1);
+  ASSERT_EQ(parsed_commands.front().first, "command1");
+  auto expected_args = std::vector<std::string>({"argument1", "argument2", "argument3"});
+  ASSERT_EQ(parsed_commands.front().second, expected_args);
+
+  free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
+}
+
+TEST(CommandParser, ThreeCommandsOneParameter) {
+  CommandParser parser{"command1", "command2", "command3"};
+
+  auto arguments = build_arguments_array(kMaxArgumentsCount, kMaxArgumentLength);
+  auto arguments_count = build_main_input_arguments("program_name command1 argument1 "
+      "command2 argument1 command3 argument1", arguments);
+  auto parsed_commands = parser.parse(arguments_count, arguments);
+  auto expected_args = std::vector<std::string>({"argument1"});
+
+  ASSERT_EQ(parsed_commands.size(), 3);
+  ASSERT_EQ(parsed_commands[0].first, "command1");
+  ASSERT_EQ(parsed_commands[0].second, expected_args);
+  ASSERT_EQ(parsed_commands[1].first, "command2");
+  ASSERT_EQ(parsed_commands[1].second, expected_args);
+  ASSERT_EQ(parsed_commands[2].first, "command3");
+  ASSERT_EQ(parsed_commands[2].second, expected_args);
+
+  free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
+}
+
+
+TEST(CommandParser, ThreeCommandsThreeParameters) {
+  CommandParser parser{"command1", "command2", "command3"};
+
+  auto arguments = build_arguments_array(kMaxArgumentsCount, kMaxArgumentLength);
+  auto arguments_count = build_main_input_arguments("program_name command1 argument1 "
+      "command2 argument2 command3 argument3", arguments);
+  auto parsed_commands = parser.parse(arguments_count, arguments);
+
+  ASSERT_EQ(parsed_commands.size(), 3);
+  ASSERT_EQ(parsed_commands[0].first, "command1");
+  ASSERT_EQ(parsed_commands[0].second, std::vector<std::string>({"argument1"}));
+  ASSERT_EQ(parsed_commands[1].first, "command2");
+  ASSERT_EQ(parsed_commands[1].second, std::vector<std::string>({"argument2"}));
+  ASSERT_EQ(parsed_commands[2].first, "command3");
+  ASSERT_EQ(parsed_commands[2].second, std::vector<std::string>({"argument3"}));
 
   free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
 }
