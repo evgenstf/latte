@@ -1,3 +1,4 @@
+// Author: Evgenii Kazakov. Github: @evgenstf
 #include <gtest/gtest.h>
 
 int main(int argc, char** argv) {

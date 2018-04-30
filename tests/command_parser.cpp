@@ -1,3 +1,4 @@
+// Author: Evgenii Kazakov. Github: @evgenstf
 #include "../command_parser/command_parser.h"
 #include <gtest/gtest.h>
 #include <unordered_set>
