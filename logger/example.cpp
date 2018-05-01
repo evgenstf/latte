@@ -6,11 +6,11 @@ using namespace latte;
 
 int main(int arguments_count, char* arguments[]) {
   SET_LOG_LEVEL(Info);
-  TRACE("trace log message");
-  DEBUG("debug log message");
-  INFO("info log message");
-  WARNING("warning log message");
-  ERROR("error log message");
-  FATAL("fatal log message");
+  TRACE("count of rabbits " << 5);
+  DEBUG("the ship successfully docked");
+  INFO("a paper airplane flew out the window");
+  WARNING("bitcoin fell");
+  ERROR("wrong pyramid volume: " << -25);
+  FATAL("the meteorite is approaching");
   return 0;
 }
