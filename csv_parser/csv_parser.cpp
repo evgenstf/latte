@@ -9,20 +9,28 @@ namespace latte {
 namespace {
 
 static constexpr char kDelimiter = ',';
+static constexpr char kBraceSymbol = '\"';
 
 auto parse_line(const std::string& line) {
   std::vector<std::string> result;
   size_t index = 0;
+  bool is_brace_open = false;
+  std::string current_item;
   while (index < line.size()) {
-    while (index < line.size() && line[index] == kDelimiter) {
+    if (index < line.size() && line[index] == kDelimiter) {
+      result.emplace_back(std::move(current_item));
+      current_item = "";
       ++index;
     }
-    if (index < line.size()) {
-      result.emplace_back();
+    while (index < line.size() && (is_brace_open || line[index] != kDelimiter)) {
+      if (line[index] == kBraceSymbol) {
+        is_brace_open ^= true;
+      }
+      current_item.push_back(line[index++]);
     }
-    while (index < line.size() && line[index] != kDelimiter) {
-      result.back().push_back(line[index++]);
-    }
+  }
+  if (!current_item.empty() || line.empty()) {
+    result.emplace_back(std::move(current_item));
   }
   return result;
 }
