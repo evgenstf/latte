@@ -20,7 +20,7 @@ ParsedCommands CommandParser::parse(int arguments_count, char* arguments[]) cons
       current_parameters = std::vector<std::string>();
     }
   }
-  if (!current_command.empty()) {
+  if (!current_parameters.empty()) {
     result.emplace_back(std::move(current_command), std::move(current_parameters));
   }
 
