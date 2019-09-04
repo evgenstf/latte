@@ -1,5 +1,5 @@
 // Author: Evgenii Kazakov. Github: @evgenstf
-#include "../command_parser/command_parser.h"
+#include "../command_parser.h"
 #include <gtest/gtest.h>
 #include <unordered_set>
 
@@ -98,7 +98,6 @@ TEST(CommandParser, ThreeCommandsOneParameter) {
   free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
 }
 
-
 TEST(CommandParser, ThreeCommandsThreeParameters) {
   CommandParser parser{"command1", "command2", "command3"};
 
@@ -116,5 +115,10 @@ TEST(CommandParser, ThreeCommandsThreeParameters) {
   ASSERT_EQ(parsed_commands[2].second, std::vector<std::string>({"argument3"}));
 
   free_arguments_array(arguments, kMaxArgumentsCount, kMaxArgumentLength);
+}
+
+int main(int argc, char** argv) {
+   ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
 
