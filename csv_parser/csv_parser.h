@@ -8,7 +8,7 @@ namespace latte::csv_parser {
 
 class CsvParser {
 public:
-  CsvParser(const std::string& file_name);
+  CsvParser(const std::string& filename);
 
   const auto& fields() const { return fields_; }
   const auto& items() const { return items_; }

@@ -44,8 +44,8 @@ auto remove_carriage_return(std::string line) {
 
 }  // namespace
 
-CsvParser::CsvParser(const std::string& file_name) {
-  std::ifstream file(file_name);
+CsvParser::CsvParser(const std::string& filename) {
+  std::ifstream file(filename);
   if (file.fail()) {
     return;
   }

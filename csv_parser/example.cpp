@@ -10,9 +10,9 @@ int main(int arguments_count, char* arguments[]) {
     return 0;
   }
   for (size_t i = 1; i < arguments_count; ++i) {
-    auto file_name = std::string(arguments[i]);
-    std::clog << "csv file name: " << file_name << std::endl;
-    CsvParser parser(file_name);
+    auto filename = std::string(arguments[i]);
+    std::clog << "csv file name: " << filename << std::endl;
+    CsvParser parser(filename);
     std::clog << "  fields: ";
     for (const auto field : parser.fields()) {
       std::clog << field << ' ';
