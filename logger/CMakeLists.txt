@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(logger)
+set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SOURCES "logger.cpp")
 

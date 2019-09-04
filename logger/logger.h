@@ -8,7 +8,7 @@
 #include <thread>
 #include <sstream>
 
-namespace latte {
+namespace latte::logger {
 
 enum class LogLevel {
   Trace = 0,
@@ -87,4 +87,4 @@ static Logger ___logger___;
 
 #define SET_LOG_LEVEL(level) { ___logger___.set_min_print_level(LogLevel::level); }
 
-}  // namespace latte
+}  // namespace latte::logger

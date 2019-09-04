@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_set>
 
-namespace latte {
+namespace latte::command_parser {
 
 using ParsedCommands = std::vector<std::pair<std::string, std::vector<std::string>>>;
 
@@ -23,4 +23,4 @@ private:
   std::unordered_set<std::string> avaliable_commands_;
 };
 
-}  // namespace latte
+}  // namespace latte::command_parser

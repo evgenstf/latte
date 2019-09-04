@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(csv_parser)
+set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SOURCES "csv_parser.cpp")
 

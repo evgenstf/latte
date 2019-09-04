@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-namespace latte {
+namespace latte::csv_parser {
 namespace {
 
 static constexpr char kDelimiter = ',';
@@ -64,4 +64,4 @@ CsvParser::CsvParser(const std::string& file_name) {
   }
 }
 
-}  // namespace latte
+}  // namespace latte::csv_parser

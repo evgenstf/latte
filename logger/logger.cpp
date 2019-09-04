@@ -1,7 +1,7 @@
 // Author: Evgenii Kazakov. Github: @evgenstf
 #include "logger.h"
 
-namespace latte {
+namespace latte::logger {
 
 Logger::Logger(bool is_async):
     is_async_(is_async), min_print_level_(LogLevel::Trace) {
@@ -56,6 +56,9 @@ void Logger::print_log_internal(const Log& log) const {
     case LogLevel::Fatal:
       std::clog << "FATAL :: ";
       break;
+    case LogLevel::Unknown:
+      std::clog << "UNKNOWN :: ";
+      break;
   }
   std::clog << log.message << std::endl;
 }
@@ -78,4 +81,4 @@ void Logger::start_logging() {
   }
 }
 
-}  // namespace latte
+}  // namespace latte::logger

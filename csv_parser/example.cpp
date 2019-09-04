@@ -2,7 +2,7 @@
 #include "csv_parser.h"
 #include <iostream>
 
-using namespace latte;
+using namespace latte::csv_parser;
 
 int main(int arguments_count, char* arguments[]) {
   if (arguments_count < 2) {

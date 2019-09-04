@@ -2,7 +2,7 @@
 #include "command_parser.h"
 #include <iostream>
 
-using namespace latte;
+using namespace latte::command_parser;
 
 const std::unordered_set<std::string>
     commands{"new", "make", "test", "read", "write", "init", "help", "try", "clear", "destroy"};

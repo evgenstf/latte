@@ -2,7 +2,7 @@
 #include "logger.h"
 #include <iostream>
 
-using namespace latte;
+using namespace latte::logger;
 
 int main(int arguments_count, char* arguments[]) {
   SET_LOG_LEVEL(Info);

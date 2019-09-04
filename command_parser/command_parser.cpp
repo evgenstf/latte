@@ -1,7 +1,7 @@
 // Author: Evgenii Kazakov. Github: @evgenstf
 #include "command_parser.h"
 
-namespace latte {
+namespace latte::command_parser {
 
 ParsedCommands CommandParser::parse(int arguments_count, char* arguments[]) const {
   ParsedCommands result;
@@ -27,4 +27,4 @@ ParsedCommands CommandParser::parse(int arguments_count, char* arguments[]) cons
   return result;
 }
 
-}  // namespace latte
+}  // namespace latte::command_parser

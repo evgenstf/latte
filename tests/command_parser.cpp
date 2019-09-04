@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <unordered_set>
 
-using namespace latte;
+using namespace latte::command_parser;
 
 namespace {
 
