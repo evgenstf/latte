@@ -9,8 +9,10 @@ Logger::Logger(bool is_async):
 }
 
 Logger::~Logger() {
-  finish_logging();
-  logging_thread_.join();
+  if (is_async_) {
+    finish_logging();
+    logging_thread_.join();
+  }
 }
 
 void Logger::set_min_print_level(LogLevel level) {
