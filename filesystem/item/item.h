@@ -3,11 +3,11 @@
 #include <string>
 #include <experimental/filesystem>
 
-namespace latte {
+namespace latte::filesystem {
 
-class FileSystemItem {
+class Item {
 public:
-  FileSystemItem(std::string path);
+  Item(std::string path);
 
   const std::string& path() const { return path_; }
   const std::string& name() const { return name_; }
@@ -21,4 +21,4 @@ private:
   const std::string location_;
 };
 
-}  // namespace latte
+}  // namespace latte::filesystem
