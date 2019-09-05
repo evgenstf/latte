@@ -11,5 +11,4 @@ target_link_libraries(command_parser_example command_parser)
 set_target_properties(command_parser_example PROPERTIES OUTPUT_NAME command_parser)
 
 include(../cmake/gtest.cmake)
-
 INIT_TEST(command_parser)
