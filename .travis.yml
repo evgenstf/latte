@@ -1,0 +1,12 @@
+language: cpp
+
+install:
+  - pip install --user -q conan
+  - conan user
+
+script:
+  - mkdir build && cd build
+  - conan install .. --build=missing -s compiler.libcxx=libstdc++11
+  - cmake .. -DCMAKE_BUILD_TYPE=Release
+  - make tests
+
