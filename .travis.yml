@@ -7,10 +7,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-7
-
-install:
-  - pip install --user -q conan
-  - conan user
+      - libgtest-dev
 
 script:
   - export CC=gcc-7
