@@ -6,7 +6,7 @@ install:
 
 script:
   - mkdir build && cd build
-  - conan install .. --build=missing -s compiler.libcxx=libstdc++11
+  - conan install .. --build=missing -s compiler.libcxx=libstdc++17
   - cmake .. -DCMAKE_BUILD_TYPE=Release
   - make tests
 
