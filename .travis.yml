@@ -1,10 +1,20 @@
 language: cpp
 
+os: linux
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+
 install:
   - pip install --user -q conan
   - conan user
 
 script:
+  - export CC=gcc-7
+  - export CXX=g++-7
   - mkdir build && cd build
   - conan install .. --build=missing -s cppstd=gnu14
   - cmake .. -DCMAKE_BUILD_TYPE=Release
